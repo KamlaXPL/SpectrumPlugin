@@ -1,27 +1,25 @@
 package me.kamlax.spectrum.helper;
 
-
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
 
 /**
  * @author KamlaX on 26.02.2020
  */
 
-public class ItemBuilder {
+public final class ItemBuilder {
 
-    public ItemBuilder() {
+    private final ItemStack itemStack;
+
+    public ItemBuilder(final ItemStack itemStack) {
+        this.itemStack = itemStack;
     }
 
-    private ItemStack itemStack = new ItemStack(Material.AIR);
-
-    private ItemMeta itemMeta = itemStack.getItemMeta();
-
-    public ItemBuilder setMaterial(Material material) {
-        itemStack.setType(material);
-        return this;
+    public static ItemBuilder of(final ItemStack itemStack) {
+        return new ItemBuilder(itemStack);
     }
 
     public ItemBuilder addEnchant(Enchantment enchantment, int level) {
@@ -30,7 +28,6 @@ public class ItemBuilder {
     }
 
     public ItemStack build() {
-        itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
 }

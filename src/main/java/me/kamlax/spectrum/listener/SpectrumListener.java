@@ -27,23 +27,23 @@ public class SpectrumListener implements Listener {
     private final ItemStack sword, helmet, boots, skull;
 
     public SpectrumListener() {
-        sword = new ItemBuilder()
-                .setMaterial(Material.DIAMOND_SWORD)
-                .addEnchant(Enchantment.DAMAGE_ALL, 3)
-                .build();
-        helmet = new ItemBuilder()
-                .setMaterial(Material.DIAMOND_HELMET)
-                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10)
-                .addEnchant(Enchantment.DURABILITY, 10)
-                .build();
-        boots = new ItemBuilder()
-                .setMaterial(Material.DIAMOND_BOOTS)
-                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10)
-                .addEnchant(Enchantment.DURABILITY, 10)
-                .build();
-        skull = new ItemBuilder()
-                .setMaterial(Material.SKULL_ITEM)
-                .build();
+        sword = new ItemBuilder(
+                    new ItemStack(Material.DIAMOND_SWORD))
+                        .addEnchant(Enchantment.DAMAGE_ALL, 3)
+                        .build();
+        helmet = new ItemBuilder(
+                    new ItemStack(Material.DIAMOND_HELMET))
+                        .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10)
+                        .addEnchant(Enchantment.DURABILITY, 10)
+                .       build();
+        boots = new ItemBuilder(
+                    new ItemStack(Material.DIAMOND_BOOTS))
+                        .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10)
+                        .addEnchant(Enchantment.DURABILITY, 10)
+                        .build();
+        skull = new ItemBuilder(
+                new ItemStack(Material.SKULL_ITEM))
+                        .build();
     }
 
     public void spawnSpectrum(Location location) {
@@ -61,7 +61,7 @@ public class SpectrumListener implements Listener {
     public void onClick(PlayerInteractEvent e) {
         final Player p = e.getPlayer();
         final boolean rightclick = e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
-        if(p.getItemInHand() != null
+        if (p.getItemInHand() != null
                 && rightclick
                 && p.getItemInHand().getType().equals(skull)
                 && p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
