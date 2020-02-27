@@ -1,6 +1,5 @@
 package me.kamlax.spectrum.listener;
 
-import lombok.Getter;
 import me.kamlax.spectrum.helper.ChatColorHelper;
 import me.kamlax.spectrum.helper.ItemBuilder;
 import org.bukkit.Location;
@@ -25,7 +24,6 @@ import org.bukkit.potion.PotionEffectType;
 
 public class SpectrumListener implements Listener {
 
-    @Getter
     private final ItemStack sword, helmet, boots, skull;
 
     public SpectrumListener() {
