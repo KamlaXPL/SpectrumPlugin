@@ -48,7 +48,7 @@ public class SpectrumListener implements Listener {
 
     @EventHandler
     public void spawnSpectrum(Location loc) {
-        final Skeleton spectrum = (Skeleton) loc.getWorld().spawnEntity(loc, EntityType.SKELETON.WITHER);
+        Skeleton spectrum = (Skeleton) loc.getWorld().spawnEntity(loc, EntityType.SKELETON.WITHER);
         spectrum.setCustomName(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"));
         spectrum.setMaxHealth(100.0);
         spectrum.setHealth(100);
@@ -60,20 +60,21 @@ public class SpectrumListener implements Listener {
 
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
-        final boolean rightclick = e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
-        if(e.getPlayer().getItemInHand() != null
+        Player p = e.getPlayer();
+        boolean rightclick = e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
+        if(p.getItemInHand() != null
                 && rightclick
-                && e.getPlayer().getItemInHand().getType().equals(skull)
-                && e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
-            e.getPlayer().getInventory().remove(skull);
-            spawnSpectrum(e.getPlayer().getLocation());
-            e.getPlayer().sendTitle("", ChatColorHelper.fixColor("&8>> &bZrespiono &9Boss'a &8<<"));
+                && p.getItemInHand().getType().equals(skull)
+                && p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
+            p.getInventory().remove(skull);
+            spawnSpectrum(p.getLocation());
+            p.sendTitle("", ChatColorHelper.fixColor("&8>> &bZrespiono &9Boss'a &8<<"));
         }
     }
 
     @EventHandler
     public void onDeath(EntityDeathEvent e) {
-        final Entity ent = e.getEntity();
+        Entity ent = e.getEntity();
         if (e.getEntity().getKiller() instanceof Player &&
                 ent instanceof Skeleton && (ent).getCustomName() != null &&
                 (ent).getCustomName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
