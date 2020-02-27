@@ -19,7 +19,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 /**
- * @author KamlaX on 26.02.2020
+ * @author KamlaX on 27.02.2020
  */
 
 public class SpectrumListener implements Listener {
