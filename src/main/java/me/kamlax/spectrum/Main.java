@@ -10,6 +10,6 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents( new SpectrumListener(), this);
+        getServer().getPluginManager().registerEvents(new SpectrumListener(), this);
     }
 }

@@ -46,9 +46,8 @@ public class SpectrumListener implements Listener {
                 .build();
     }
 
-    @EventHandler
-    public void spawnSpectrum(Location loc) {
-        Skeleton spectrum = (Skeleton) loc.getWorld().spawnEntity(loc, EntityType.SKELETON.WITHER);
+    public void spawnSpectrum(Location location) {
+        final Skeleton spectrum = (Skeleton) location.getWorld().spawnEntity(location, EntityType.SKELETON.WITHER);
         spectrum.setCustomName(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"));
         spectrum.setMaxHealth(100.0);
         spectrum.setHealth(100);
@@ -60,8 +59,8 @@ public class SpectrumListener implements Listener {
 
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
-        Player p = e.getPlayer();
-        boolean rightclick = e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
+        final Player p = e.getPlayer();
+        final boolean rightclick = e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
         if(p.getItemInHand() != null
                 && rightclick
                 && p.getItemInHand().getType().equals(skull)
@@ -74,10 +73,10 @@ public class SpectrumListener implements Listener {
 
     @EventHandler
     public void onDeath(EntityDeathEvent e) {
-        Entity ent = e.getEntity();
+        final Entity entity = e.getEntity();
         if (e.getEntity().getKiller() instanceof Player &&
-                ent instanceof Skeleton && (ent).getCustomName() != null &&
-                (ent).getCustomName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
+                entity instanceof Skeleton && (entity).getCustomName() != null &&
+                (entity).getCustomName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
             e.getDrops().clear();
             e.getEntity().getKiller().sendTitle("", ChatColorHelper.fixColor("&8>> &7Zabiles &9Boss'a &8<<"));
         }
