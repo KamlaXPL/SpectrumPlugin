@@ -7,9 +7,9 @@ import org.bukkit.inventory.ItemStack;
  * @author KamlaX on 27.02.2020
  */
 
-public final class ItemBuilder {
+public class ItemBuilder {
 
-    private ItemStack itemStack;
+    private final ItemStack itemStack;
 
     public ItemBuilder(ItemStack itemStack) {
         this.itemStack = itemStack;
