@@ -58,27 +58,27 @@ public class SpectrumListener implements Listener {
     }
 
     @EventHandler
-    public void onClick(PlayerInteractEvent e) {
-        final Player p = e.getPlayer();
-        final boolean rightclick = e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK;
-        if (p.getItemInHand() != null
+    public void onClick(PlayerInteractEvent event) {
+        final Player player = event.getPlayer();
+        final boolean rightclick = event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK;
+        if (player.getItemInHand() != null
                 && rightclick
-                && p.getItemInHand().getType().equals(skull)
-                && p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
-            p.getInventory().remove(skull);
-            spawnSpectrum(p.getLocation());
-            p.sendTitle("", ChatColorHelper.fixColor("&8>> &bZrespiono &9Boss'a &8<<"));
+                && player.getItemInHand().getType().equals(skull)
+                && player.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
+            player.getInventory().remove(skull);
+            spawnSpectrum(player.getLocation());
+            player.sendTitle("", ChatColorHelper.fixColor("&8>> &bZrespiono &9Boss'a &8<<"));
         }
     }
 
     @EventHandler
-    public void onDeath(EntityDeathEvent e) {
-        final Entity entity = e.getEntity();
-        if (e.getEntity().getKiller() instanceof Player &&
+    public void onDeath(EntityDeathEvent event) {
+        final Entity entity = event.getEntity();
+        if (event.getEntity().getKiller() instanceof Player &&
                 entity instanceof Skeleton && (entity).getCustomName() != null &&
                 (entity).getCustomName().equalsIgnoreCase(ChatColorHelper.fixColor("&8>> &9&lBoss &8<<"))) {
-            e.getDrops().clear();
-            e.getEntity().getKiller().sendTitle("", ChatColorHelper.fixColor("&8>> &7Zabiles &9Boss'a &8<<"));
+            event.getDrops().clear();
+            event.getEntity().getKiller().sendTitle("", ChatColorHelper.fixColor("&8>> &7Zabiles &9Boss'a &8<<"));
         }
     }
 }
