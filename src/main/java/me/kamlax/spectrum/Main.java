@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * @author KamlaX on 27.02.2020
  */
+
 public class Main extends JavaPlugin {
 
     @Override
