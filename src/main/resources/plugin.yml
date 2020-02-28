@@ -1,5 +1,5 @@
-name: KGuildAlert
+name: SpectrumPlugin
 version: 1.0
-main: me.kamlax.guildalert.Main
-commands:
-  goglos:
+main: me.kamlax.spectrum.Main
+author: KamlaX
+website: http://kamilokon.pl
