@@ -54,7 +54,7 @@ public class SpectrumListener implements Listener {
         spectrum.getEquipment().setHelmet(helmet);
         spectrum.getEquipment().setBoots(boots);
         spectrum.getEquipment().setItemInHand(sword);
-        spectrum.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 999999999, 1));
+        spectrum.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE , 1));
     }
 
     @EventHandler
